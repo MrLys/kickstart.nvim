@@ -41,6 +41,62 @@ return {
     end,
   },
   {
+    'folke/trouble.nvim',
+    keys = {
+      {
+        '<leader>tm',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (Trouble)',
+      },
+      {
+        '<leader>tt',
+        '<cmd>Trouble symbols toggle<cr>',
+        desc = 'Symbols (Trouble)',
+      },
+      {
+        '<leader>tl',
+        '<cmd>Trouble loclist toggle<cr>',
+        desc = 'Location List (Trouble)',
+      },
+    },
+    opts = {
+      restore = false,
+      auto_close = false,
+      auto_preview = true,
+      open_no_results = true,
+      pinned = true,
+      multiline = false,
+    }, -- for default options, refer to the configuration section for custom setup.
+    init = function()
+      vim.api.nvim_create_autocmd('BufReadPost', {
+        pattern = '*',
+        callback = function()
+          require('trouble').refresh()
+        end,
+      })
+    end,
+  },
+  {
     'github/copilot.vim',
+  },
+  {
+    'stevearc/oil.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('oil').setup {
+        columns = { 'icon' },
+        keymaps = {
+          ['<C-h>'] = false,
+          ['<M-h>'] = 'actions.select_split',
+        },
+        view_options = {
+          show_hidden = true,
+        },
+      }
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+      vim.keymap.set('n', '<leader>-', require('oil').toggle_float, { desc = 'Toggle Oil' })
+    end,
   },
 }
