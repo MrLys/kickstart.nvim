@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "tailwindcss", "ts_ls", "gopls", "sqlls" }
+local servers = { "html", "cssls", "tailwindcss", "ts_ls", "gopls", "sqlls", "bashls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 local map = vim.keymap.set
 -- export on_attach & capabilities
