@@ -18,10 +18,16 @@ map("n", "<leader>tl", "<cmd>Trouble loclist toggle<cr>", { desc = "Location Lis
 
 map("n", "<leader>t", ":ToggleTerm<CR>", { desc = "Toggle terminal", silent = true })
 
-map("n", "<leader>sf", "<cmd>Telescope find_files<cr>", { desc = "[S]earch [F]iles" })
+map(
+  "n",
+  "<leader>sf",
+  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+  { desc = "[S]earch [F]iles" }
+)
 -- telescope
 map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 map("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
+map("n", "<leader>ws", require("telescope.builtin").lsp_workspace_symbols, { desc = "Workspace symbols" })
 map("n", "<leader><leader>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 map("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 
@@ -50,12 +56,6 @@ map("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]ea
 map("n", "<leader>sr", require("telescope.builtin").resume, { desc = "[S]earch [R]esume" })
 map("n", "<leader>s.", require("telescope.builtin").oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 
-map(
-  "n",
-  "<leader>sf",
-  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-  { desc = "[S]earch [F]iles" }
-)
 map("n", "<leader>ss", require("telescope.builtin").builtin, { desc = "[S]earch [S]elect Telescope" })
 
 map("n", "<leader>th", function()
